@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -20,21 +19,22 @@ public class SerialProcessor{
       // use US locale to be able to identify floats in the string
       sc.useLocale(Locale.US);
         
-      /*System.out.println(sc.nextDouble());**/
-      //  ArrayList <Integer> my_data=new ArrayList<Integer>(arraySize);
+
        
        for(int i=0;i<row;i++){
            for(int j=0;  j<col; j++){
                arr[i][j]=sc.nextFloat();
            }
        }
-       System.out.println(DataProcessor(arr));
+       System.gc();
+       DataProcessor(arr);
       
     }
-    /*Data Processing Method*/
-    public static int DataProcessor(float[][]arr){
-        int basin_counter=0;
 
+    /*Data Processing Method*/
+    public static void DataProcessor(float[][]arr){
+        int basin_counter=0;
+        ArrayList <String> results=new ArrayList <String> ();
         long tick=System.currentTimeMillis();
         for(int i=1;i<row-1;i++){
             for(int j=1;j<col-1;j++){
@@ -51,12 +51,17 @@ public class SerialProcessor{
                 if(counter==8){
                     
                     basin_counter++;
+                    results.add(i+" "+j);
                 }
             }
         }
         long tock=System.currentTimeMillis()-tick;
         System.out.println("Time elapsed: "+tock);
-        return basin_counter;
+        System.out.println(basin_counter);
+
+        for(String value:results){
+            System.out.println(value);
+        }
 
 
     }
