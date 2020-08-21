@@ -20,7 +20,7 @@ $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
 
 
-CLASSES=SerialProcessor.class
+CLASSES=SerialProcessor.class DataThreadProcessor.class ParallelProcessor.class
 	
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 

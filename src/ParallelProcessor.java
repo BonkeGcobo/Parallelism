@@ -26,6 +26,17 @@ public class ParallelProcessor{
                arr[i][j]=sc.nextFloat();
            }
        }
+       ArrayList<String> result=new ArrayList<String>();
+
+       long tick=System.currentTimeMillis();
+       DataThreadProcessor t=new DataThreadProcessor(arr,result, 1,row-1);
+       long tock=System.currentTimeMillis()-tick;
+       System.out.println("Time elapsed: "+tock);
+       ForkJoinPool.commonPool().invoke(t);
+
+       for(String value: result){
+           System.out.println(value);
+       }
     }
 
     public static void main(String[]args){

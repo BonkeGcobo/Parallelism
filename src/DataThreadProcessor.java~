@@ -1,0 +1,32 @@
+import java.util.concurrent.RecursiveAction;
+import java.util.ArrayList; 
+
+class DataThreadProcessor extends RecursiveAction{
+    int sequential_cutoff=4;
+    ArrayList <String> result=new ArrayList<String>();
+    float[][]arr; int lower_bound; int upper_bound;
+
+    DataThreadProcessor(float[][]arr,int lo, int hi){
+        this.arr=arr;
+        this.lower_bound=lo;
+        this.upper_bound=hi;
+    }
+
+    protected void compute(){
+        if(hi-lo<=4){
+            for(int i=lo+1;i<hi-1;i++){
+                for(int j=1;j<col-1;j++){
+                    float mid_value=arr[i][j];
+                    float[] nbours = new float[]{ arr[i-1][j-1],arr[i-1][j],arr[i-1][j+1],arr[i][j-1],arr[i][j+1],
+                    arr[i+1][j-1],arr[i+1][j],arr[i+1][j+1] };
+                }
+        }
+
+    }
+
+    
+
+
+
+
+}
